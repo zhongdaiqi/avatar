@@ -19,7 +19,7 @@ name: iOS Release (TestFlight)
 # ios.yml 的未签名构建就够了。
 #
 # 前置条件（需在 Apple Developer / App Store Connect 后台手动完成，CI 做不到）：
-#   1. 在 developer.apple.com 注册 App ID = com.zuime.avatar.avatar。
+#   1. 在 developer.apple.com 注册 App ID = com.zuime.avatar。
 #   2. 在 App Store Connect 创建该 App 记录（同名 bundle id）。
 #   3. 生成 App Store Connect API Key（.p8），并把 Key ID / Issuer ID / .p8
 #      分别填进仓库 Secrets（APP_STORE_CONNECT_KEY_ID / ISSUER_ID / API_KEY）。
