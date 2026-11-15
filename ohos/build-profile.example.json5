@@ -1,0 +1,49 @@
+// Example HarmonyOS signing configuration.
+// Copy this file to build-profile.json5 and fill in your own certificate
+// material. build-profile.json5 is gitignored and must never be committed.
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "OpenHarmony",
+        "material": {
+          "certpath": "/path/to/your.cer",
+          "keyAlias": "your_key_alias",
+          "keyPassword": "your_encrypted_key_password",
+          "profile": "/path/to/your.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/path/to/your.p12",
+          "storePassword": "your_encrypted_store_password"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "6.1.0(23)",
+        "runtimeOS": "HarmonyOS",
+        "compileSdkVersion": "26.0.0",
+        "targetSdkVersion": "26.0.0"
+      }
+    ],
+    "buildModeSet": [
+      { "name": "debug" },
+      { "name": "profile" },
+      { "name": "release" }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": ["default"]
+        }
+      ]
+    }
+  ]
+}
