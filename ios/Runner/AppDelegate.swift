@@ -122,7 +122,12 @@ import UIKit
       return
     }
     PHPhotoLibrary.requestAuthorization { status in
-      guard status == .authorized || status == .limited else {
+      // .limited 是 iOS 14+ 才有的枚举值，低版本只认 .authorized
+      var granted = (status == .authorized)
+      if #available(iOS 14.0, *), status == .limited {
+        granted = true
+      }
+      guard granted else {
         DispatchQueue.main.async {
           result(FlutterError(code: "NO_PERMISSION",
                               message: "未获得相册写入权限，请到「设置 → 隐私 → 照片」中允许",
